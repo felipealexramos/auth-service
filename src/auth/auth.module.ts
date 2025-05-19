@@ -9,7 +9,10 @@ import { RabbitMQModule } from '../rabbitmq/rabbitmq.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({}),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '7d' },
+    }),
     RabbitMQModule,
   ],
   controllers: [AuthController],

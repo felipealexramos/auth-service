@@ -11,6 +11,7 @@ services:
     environment:
       DATABASE_URL: postgres://user:pass@postgres:5432/auth
       RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+      JWT_SECRET: sua_chave_secreta_aqui
 
   postgres:
     image: postgres:15
@@ -26,7 +27,7 @@ services:
     image: rabbitmq:3-management
     ports:
       - "5672:5672"
-      - "15672:15672" # interface web
+      - "15673:15672" # interface web
 
 volumes:
   pgdata:
